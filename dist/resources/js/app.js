@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+    window.onerror = function() {
+        alert("Error caught");
+    };
     // Toggle plus minus icon on show hide of collapse element
      $(document).on('show.bs.collapse', ".collapse", function() {
         $(this).parent().find(".btn-arrow").addClass("rotate");
