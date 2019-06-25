@@ -1,7 +1,9 @@
 var selectedLang = getUrlVars()["selectedlang"];
 var appName = 'AppName';
 
-console.log("window.cordova", window.parent.cordova);
+if(window.parent.cordova) {
+    console.log("window.cordova", window.parent.cordova);
+}
 if (getUrlVars()["appname"]) {
     appName = getUrlVars()["appname"];
 }
