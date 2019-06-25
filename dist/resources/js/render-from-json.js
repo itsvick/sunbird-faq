@@ -9,7 +9,7 @@ console.log('selected Lang', selectedLang);
 $(document).ready(function () {
 
     window.addEventListener('message', function (event) {
-        appName = event.data.name;
+        appName = event.data.name ? event.data.name : 'AppName';
     }, false);
 
     var jsonUrl;
@@ -26,6 +26,8 @@ $(document).ready(function () {
         setTimeout(function () {
             readJson(jsonUrl);
         }, 100)
+    } else {
+        readJson(jsonUrl);
     }
 });
 
