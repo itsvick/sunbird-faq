@@ -1,15 +1,14 @@
 var selectedLang = getUrlVars()["selectedlang"];
-var appName = '';
-// if (window.parent.cordova) {
-//     window.parent.cordova.getAppVersion.getAppName(function (name) {
-//         appName = name;
-//     });
-// } else {
-//     appName = getUrlVars()["appname"];
-// }
-appName = 'DIksha';
 console.log('selected Lang', selectedLang);
 $(document).ready(function () {
+    var appName = '';
+    if (window.parent.cordova) {
+        window.parent.cordova.getAppVersion.getAppName(function (name) {
+            appName = name;
+        });
+    } else {
+        appName = getUrlVars()["appname"];
+    }
 
     var jsonUrl;
     if (selectedLang) {
