@@ -1,14 +1,16 @@
 var selectedLang = getUrlVars()["selectedlang"];
+var appName = 'AppName';
+
+if (getUrlVars()["appname"]) {
+    appName = getUrlVars()["appname"];
+}
+
 console.log('selected Lang', selectedLang);
 $(document).ready(function () {
-    var appName = '';
-    if (window.parent.cordova) {
-        window.parent.cordova.getAppVersion.getAppName(function (name) {
-            appName = name;
-        });
-    } else {
-        appName = getUrlVars()["appname"];
-    }
+
+    window.addEventListener('message', function (event) {
+        appName = event.data.name;
+    }, false);
 
     var jsonUrl;
     if (selectedLang) {
@@ -19,6 +21,15 @@ $(document).ready(function () {
     }
 
     console.log(jsonUrl);
+
+    if (appName === 'AppName') {
+        setTimeout(function () {
+            readJson(jsonUrl);
+        }, 100)
+    }
+});
+
+function readJson(jsonUrl) {
     $.getJSON(jsonUrl, function (data) {
         for (var i = 0; i < data.faqs.length; i++) {
             if (data.faqs[i].topic.includes('{{APP_NAME}}')) {
@@ -84,9 +95,8 @@ $(document).ready(function () {
             + '<button class="report-button"><img src="./resources/images/Report.png"></span> ' + data.constants.reportIssueMsg + '</button>'
             + '</div>'
         $('#send-email').replaceWith(html);
-    })
-});
-
+    });
+}
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
