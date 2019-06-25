@@ -9,7 +9,7 @@ console.log('selected Lang', selectedLang);
 $(document).ready(function () {
 
     window.addEventListener('message', function (event) {
-        appName = event.data.name ? event.data.name : 'AppName';
+        appName = event.data.name ? event.data.name : appName;
     }, false);
 
     var jsonUrl;
