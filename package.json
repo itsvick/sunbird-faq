@@ -1,0 +1,21 @@
+{
+  "name": "sunbird-faq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \" success\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsvick/sunbird-faq.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsvick/sunbird-faq/issues"
+  },
+  "homepage": "https://github.com/itsvick/sunbird-faq#readme"
+}
